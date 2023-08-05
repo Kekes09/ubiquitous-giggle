@@ -1,0 +1,18 @@
+import telebot;
+
+bot = telebot.TeleBot('Token');
+Chat_id= 'id'
+@bot.message_handler(commands=['start'])
+
+def start(message):
+    msg = bot.send_message(message.chat.id, "Здравствуйте, отправляйте свои файлы!")
+    bot.register_next_step_handler(msg, forward)
+
+def forward(message):
+    while :
+        pass
+    bot.forward_message(Chat_id, message.chat.id, message.message_id)
+    msg = bot.send_message(message.chat.id,"СПАСИБО!")
+    bot.register_next_step_handler(msg, forward)
+       
+bot.polling(none_stop=True)
